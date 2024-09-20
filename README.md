@@ -13,3 +13,5 @@
 4. run the server
     - python manage.py runserver
 
+5. add some products in admin or shell and navigate to 'http://127.0.0.1:8000/products/'
+
