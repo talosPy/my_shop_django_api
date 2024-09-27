@@ -1,9 +1,15 @@
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from products.models import Product
-from products.serializers import ProductSerializer
+from products.models import Category, Product
+from products.serializers import CategorySerializer, ProductSerializer
 from rest_framework.generics import get_object_or_404
+
+@api_view(['GET'])
+def category_list(request):
+    categories = Category.objects.all()
+    serializer = CategorySerializer(categories, many=True)
+    return Response(serializer.data)
 
 
 @api_view(['GET', 'POST'])
@@ -12,7 +18,14 @@ def product_list(request):
     List all  products, or create a new product.
     """
     if request.method == 'GET':
-        products = Product.objects.all()
+        category_id = request.GET.get('category_id')
+        if category_id:
+            # Get the category object
+            category = Category.objects.get(id=category_id)        
+            # Filter products that belong to the selected category
+            products = Product.objects.filter(category=category)
+        else:
+            products = Product.objects.all()
         serializer = ProductSerializer(products, many=True)
         return Response(serializer.data)
 
