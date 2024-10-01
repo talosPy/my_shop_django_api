@@ -13,6 +13,11 @@
         .category-item {
             display: inline-block;
         }
+        .product-image {
+            max-width: 100px; /* Adjust the width as needed */
+            max-height: 100px; /* Adjust the height as needed */
+            object-fit: contain; /* Maintains aspect ratio */
+        }
     </style>
 </head>
 <body>
@@ -86,7 +91,7 @@
                     productItem.href = `/front/product.html?id=${product.id}`;
                     const categoryNames = product.category.map(cat => cat.name).join(', ');
                     productItem.innerHTML = `<strong>${product.name}</strong> - $${product.price} - ${categoryNames}`;
-                    productItem.innerHTML += '<img src="http://127.0.0.1:8000/images/Oranges_-_whole-halved-segment_uDZ69ok.jpg"/>'
+                    productItem.innerHTML += `<img src="${HOST}/${product.image}/" class="product-image"/>`
                     // Create delete link with an onclick function
                     const deleteLink = document.createElement('a');
                     deleteLink.className = 'text-danger ml-3';
