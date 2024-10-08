@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['my-shop-django-api-bwls.onrender.com']
+ALLOWED_HOSTS = ['my-shop-django-api-bwls.onrender.com', '127.0.0.1']
 CORS_ALLOW_ALL_ORIGINS = True
 CSRF_COOKIE_SECURE = True
 CSRF_TRUSTED_ORIGINS = ['https://my-shop-django-api-bwls.onrender.com']
