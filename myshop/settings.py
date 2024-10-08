@@ -28,7 +28,10 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['my-shop-django-api-bwls.onrender.com']
-
+CORS_ALLOW_ALL_ORIGINS = True
+CSRF_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = ['https://my-shop-django-api-bwls.onrender.com']
+CSRF_ALLOWED_ORIGINS = ['https://my-shop-django-api-bwls.onrender.com']
 
 # Application definition
 
@@ -56,8 +59,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
-CSRF_COOKIE_SECURE = True
+
 
 ROOT_URLCONF = 'myshop.urls'
 
